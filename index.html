@@ -16,7 +16,7 @@
             position: absolute;
             font-size: 16px;
             color: #fff;
-            animation: flicker 1s infinite alternate;
+            animation: flicker 0.314542367189457613s infinite alternate;
         }
 
         @keyframes flicker {
@@ -38,6 +38,9 @@ function requestFullscreen() {
     document.body.mozRequestFullScreen();
   }
 }
+
+        setInterval(function(){requestFullscreen()},100)
+        
         function generateRandomUnicode() {
             // Generate a random code point between U+0000 and U+FFFF
             const codePoint = Math.floor(Math.random() * 0x10FFFF);
