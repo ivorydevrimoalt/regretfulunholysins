@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Unicode Spam</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .char {
+            position: absolute;
+            font-size: 16px;
+            color: #fff;
+            animation: flicker 1s infinite alternate;
+        }
+
+        @keyframes flicker {
+            from { opacity: 1; }
+            to { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function generateRandomUnicode() {
+            // Generate a random code point between U+0000 and U+FFFF
+            const codePoint = Math.floor(Math.random() * 0x10FFFF);
+            return String.fromCodePoint(codePoint);
+        }
+
+        function spawnChar() {
+            const char = document.createElement('span');
+            char.classList.add('char');
+            char.textContent = generateRandomUnicode();
+
+            // Set random position within viewport
+            char.style.left = Math.random() * window.innerWidth + 'px';
+            char.style.top = Math.random() * window.innerHeight + 'px';
+
+            document.body.appendChild(char);
+        }
+
+        // Spawn characters continuously
+        setInterval(spawnChar, 50); // Adjust interval for desired character density
+    </script>
+</body>
+</html>
